@@ -12,6 +12,7 @@ Questa repository serve a creare una skill custom a partire dal processo reale d
 - Non modificare la skill fallback `create-repository-skill`.
 - Non leggere o creare secret, credential o file di ambiente.
 - Dopo la creazione, esegui `pnpm validate:skill` e riporta il risultato.
+- Quando serve produrre un messaggio di commit, usa la skill `.agents/skills/generate-commit-message/SKILL.md`.
 - Prova la nuova skill una volta prima di considerare concluso il lavoro.
 
 ## Compatibilita'
