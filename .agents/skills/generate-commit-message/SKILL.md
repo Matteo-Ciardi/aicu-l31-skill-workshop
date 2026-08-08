@@ -38,6 +38,7 @@ description: Analyze Git diffs and produce a Conventional Commits message. Use w
 4. Group mixed-type diffs into separate commits:
    - if the diff mixes multiple types, group the files by type and produce one message per group (separate commits), not a single dominant type;
    - stage the files of each group with `git add <file>` before proposing its message;
+   - for each group, list which files belong to it alongside the message;
    - if all changes share one type, use a single group and a single message.
 5. Add `scope` in parentheses only if all changed files belong to one clearly identifiable module or area.
 6. If the change breaks existing behavior or interfaces, add `!` before the `:` and a `BREAKING CHANGE:` note in the body.
@@ -62,6 +63,19 @@ BREAKING CHANGE: description
 - `short description`: imperative, lowercase, no trailing period, up to ~50 chars.
 - For `revert`, use the spec form: `revert: <description>` with a `Refs: <sha>` footer.
 - Body and breaking-change note only if needed. Multiple groups produce multiple messages; one message per set of changes.
+- When there are multiple groups (mixed-type diff), present the output as a table with the columns `File` and `Commit message`, one row per group showing the group's files and the proposed message:
+
+  ```
+  | File                     | Commit message                    |
+  | ------------------------ | --------------------------------- |
+  | src/notifiche.js         | feat: add fan notifications       |
+  | src/player.js            | fix: fallback when no url         |
+  | package.json             | build: bump express to 4.20       |
+  | scripts/cleanup.js       | refactor: extend cleanup to cache |
+  | README.md                | docs: update temp repo desc       |
+  ```
+
+- For a single-type diff, show only the single message, without a table.
 
 ## Boundaries
 
