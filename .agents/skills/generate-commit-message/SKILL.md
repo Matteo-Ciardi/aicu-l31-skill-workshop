@@ -20,6 +20,8 @@ The agent reads the changes itself with Git. Do not ask the user to paste a diff
 4. Add `scope` in parentheses only if all changed files belong to one clearly identifiable module or area.
 5. If the change breaks existing behavior or interfaces, add `!` before the `:` and a `BREAKING CHANGE:` note in the body.
 
+When the user asks for a "commit", produce the message and show it to the user. Do not run `git commit` unless the user explicitly asks to execute the commit (e.g. "esegui il commit", "comittalo", "run the commit").
+
 ## Output
 
 Produce only the structured message.
@@ -40,7 +42,7 @@ BREAKING CHANGE: description
 
 ## Boundaries
 
-- Do NOT run `git commit`; only produce the message.
+- Produce only the message. Do NOT run `git commit` unless the user explicitly asks to commit.
 - Do NOT edit, stage, or move files.
 - Do NOT read secrets, credentials, or environment files.
 - Do NOT invoke git hooks or change Git configuration.
